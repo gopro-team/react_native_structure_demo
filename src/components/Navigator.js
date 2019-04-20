@@ -26,6 +26,7 @@ const createDrawer = () => {
     initialRouteName: 'HomeStack',
   };
   const drawer = createDrawerNavigator(routeConfigs, navigatorConfig);
+  console.log(drawer);
   return drawer;
 };
 
@@ -52,6 +53,7 @@ const createHomeStack = () => {
     initialRouteName: 'Home',
   };
   const mainStack = createStackNavigator(routeConfigs, navigatorConfig);
+  console.log(mainStack);
   return mainStack;
 };
 
