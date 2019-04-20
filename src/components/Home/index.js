@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Container, Header, Content, Button, Text } from 'native-base';
+import { navigate } from 'components/Navigator';
 
 export default class Home extends Component {
   render() {
     return(
-      <Text>Home</Text>
+      <Container>
+        <Text>Home</Text>
+        <Button
+          onPress={() => {
+            navigate('Filter');
+          }}
+        >
+          <Text>To filter</Text>
+        </Button>
+      </Container>
     );
   }
 }

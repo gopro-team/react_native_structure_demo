@@ -9,6 +9,8 @@ const composedEnhancer = compose(applyMiddleware(thunkMiddleware, promiseMiddlew
 
 const initStore = () => createStore(rootReducer, {}, composedEnhancer);
 
+const store = initStore();
+
 module.exports = {
-  initStore
+  store
 };

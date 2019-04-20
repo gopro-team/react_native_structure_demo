@@ -2,59 +2,70 @@ import React from 'react';
 import {
   createAppContainer,
   createStackNavigator,
-  createDrawerNavigator
+  createDrawerNavigator,
+  NavigationActions,
 } from 'react-navigation';
-
 import Home from 'components/Home';
+import Filter from 'components/Filter';
+import Profile from 'components/Profile';
 
-const createDrawer = () => {
+const createDrawer = (HomeStack) => {
   const routeConfigs = {
     HomeStack: {
-      screen: createHomeStack(),
-      route: '/stack',
+      screen: HomeStack,
     },
     Profile: {
-      screen: React.Fragment,
-      route: '/profile',
+      screen: Profile,
     },
     Favorite: {
       screen: React.Fragment,
-      route: '/favorite',
     },
   };
   const navigatorConfig = {
     initialRouteName: 'HomeStack',
   };
-  const drawer = createDrawerNavigator(routeConfigs, navigatorConfig);
-  console.log(drawer);
-  return drawer;
+  const Drawer = createDrawerNavigator(routeConfigs, navigatorConfig);
+  return Drawer;
 };
 
 const createHomeStack = () => {
   const routeConfigs = {
     Home: {
       screen: Home,
-      route: '/stack/home',
     },
     Filter: {
-      screen: React.Fragment,
-      route: '/stack/filter',
+      screen: Filter,
     },
     Detail: {
       screen: React.Fragment,
-      route: '/stack/detail',
     },
     Camera: {
       screen: React.Fragment,
-      route: '/stack/camera',
     },
   };
   const navigatorConfig = {
     initialRouteName: 'Home',
   };
-  const mainStack = createStackNavigator(routeConfigs, navigatorConfig);
-  console.log(mainStack);
-  return mainStack;
+  const MainStack = createStackNavigator(routeConfigs, navigatorConfig);
+  return MainStack;
 };
 
-export default createAppContainer(createDrawer());
+export const StackNavigator = createHomeStack();
+export const DrawerNavigator = createDrawer(StackNavigator);
+
+let navigator;
+
+export const setTopLevelNavigator = (navigatorRef) => {
+  navigator = navigatorRef;
+};
+
+export const navigate = (routeName, params) => {
+  navigator.dispatch(
+    NavigationActions.navigate({
+      routeName,
+      params,
+    })
+  );
+};
+
+export default createAppContainer(DrawerNavigator);
