@@ -9,30 +9,30 @@ import Home from 'components/Home';
 
 const createDrawer = () => {
   const routeConfigs = {
-    Home: {
-      screen: Home,
+    HomeStack: {
+      screen: createHomeStack(),
       route: '/',
     }
   };
   const navigatorConfig = {
-    initialRouteName: 'Home',
+    initialRouteName: 'HomeStack',
   };
   const drawer = createDrawerNavigator(routeConfigs, navigatorConfig);
   return drawer;
 };
 
-const createMainStack = () => {
+const createHomeStack = () => {
   const routeConfigs = {
-    HomeDrawer: {
-      screen: createDrawer(),
-      route: '/',
+    Home: {
+      screen: Home,
+      route: '/home',
     }
   };
   const navigatorConfig = {
-    initialRouteName: 'HomeDrawer',
+    initialRouteName: 'Home',
   };
   const mainStack = createStackNavigator(routeConfigs, navigatorConfig);
   return mainStack;
-}
+};
 
-export default createAppContainer(createMainStack());
+export default createAppContainer(createDrawer());
