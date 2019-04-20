@@ -11,8 +11,16 @@ const createDrawer = () => {
   const routeConfigs = {
     HomeStack: {
       screen: createHomeStack(),
-      route: '/',
-    }
+      route: '/stack',
+    },
+    Profile: {
+      screen: React.Fragment,
+      route: '/profile',
+    },
+    Favorite: {
+      screen: React.Fragment,
+      route: '/favorite',
+    },
   };
   const navigatorConfig = {
     initialRouteName: 'HomeStack',
@@ -25,8 +33,20 @@ const createHomeStack = () => {
   const routeConfigs = {
     Home: {
       screen: Home,
-      route: '/home',
-    }
+      route: '/stack/home',
+    },
+    Filter: {
+      screen: React.Fragment,
+      route: '/stack/filter',
+    },
+    Detail: {
+      screen: React.Fragment,
+      route: '/stack/detail',
+    },
+    Camera: {
+      screen: React.Fragment,
+      route: '/stack/camera',
+    },
   };
   const navigatorConfig = {
     initialRouteName: 'Home',
