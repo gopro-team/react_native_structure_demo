@@ -32,6 +32,9 @@ const createHomeStack = () => {
   const routeConfigs = {
     Home: {
       screen: Home,
+      navigationOptions: {
+        header: null,
+      },
     },
     Filter: {
       screen: Filter,
