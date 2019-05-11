@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
+import { withNavigation } from 'react-navigation';
 import { TouchableOpacity } from 'react-native';
 import {
-  Header, Button, Text, Left, Body, Right, Icon, Title
+  Header, Button, Left, Body, Right, Icon, Title
 } from 'native-base';
 import styles from './index.style';
 
 export class HomeHeader extends Component {
+  openDrawer = () => {
+    const { navigation } = this.props;
+    navigation.openDrawer();
+  }
+
   render() {
     return (
       <Header style={styles.header}>
         <Left>
-          <Button transparent>
+          <TouchableOpacity
+            onPress={this.openDrawer}
+          >
             <Icon name="menu" />
-          </Button>
+          </TouchableOpacity>
         </Left>
         <Body>
           <TouchableOpacity style={styles.body}>
@@ -21,13 +29,13 @@ export class HomeHeader extends Component {
           </TouchableOpacity>
         </Body>
         <Right>
-          <Button transparent>
+          <TouchableOpacity>
             <Icon name="search" />
-          </Button>
+          </TouchableOpacity>
         </Right>
       </Header>
     );
   }
 }
 
-export default HomeHeader;
+export default withNavigation(HomeHeader);

@@ -6,5 +6,6 @@ export default objToStyle({
   list: {
     flexWrap: 'wrap',
     flexDirection: 'row',
+    padding: size.xs,
   },
 });
