@@ -4,6 +4,7 @@ import {
 } from 'native-base';
 import HomeHeader from './HomeHeader';
 import PhotosList from './PhotosList';
+import Filter from './Filter';
 
 export default class Home extends Component {
   render() {
@@ -11,6 +12,7 @@ export default class Home extends Component {
       <Container>
         <HomeHeader />
         <PhotosList />
+        <Filter />
       </Container>
     );
   }

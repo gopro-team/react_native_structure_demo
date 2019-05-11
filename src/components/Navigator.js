@@ -6,7 +6,6 @@ import {
   NavigationActions,
 } from 'react-navigation';
 import Home from 'components/Home';
-import Filter from 'components/Filter';
 import Profile from 'components/Profile';
 
 const createDrawer = (HomeStack) => {
@@ -35,9 +34,6 @@ const createHomeStack = () => {
       navigationOptions: {
         header: null,
       },
-    },
-    Filter: {
-      screen: Filter,
     },
     Detail: {
       screen: React.Fragment,

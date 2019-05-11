@@ -7,5 +7,6 @@ export default objToStyle({
     flexWrap: 'wrap',
     flexDirection: 'row',
     padding: size.xs,
+    height: 'auto',
   },
 });

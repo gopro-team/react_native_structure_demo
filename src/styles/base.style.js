@@ -45,6 +45,7 @@ export const header = {
     paddingTop: size.xxxs,
     paddingBottom: size.xxxs,
     backgroundColor: color.white,
+    zIndex: 1,
   },
 };
 
