@@ -1,12 +1,29 @@
-import { size } from 'styles/base.style';
+import * as Animatable from 'react-native-animatable';
+import { size, header } from 'styles/base.style';
 
-export const filterDropdown = (initialHeight = 0) => ({
+const filterFadeInDown = {
   0: {
     opacity: 0,
-    height: initialHeight,
+    translateY: header.default.height - size.vh,
   },
   1: {
     opacity: 1,
-    height: size.vh,
+    translateY: 0,
   },
+};
+
+const filterFadeOutUp = {
+  0: {
+    opacity: 1,
+    translateY: 0,
+  },
+  1: {
+    opacity: 0,
+    translateY: header.default.height - size.vh,
+  },
+};
+
+Animatable.initializeRegistryWithDefinitions({
+  filterFadeInDown,
+  filterFadeOutUp,
 });

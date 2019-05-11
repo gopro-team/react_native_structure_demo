@@ -20,6 +20,7 @@ export const size = {
 
 export const color = {
   white: 'white',
+  black: 'black',
 };
 
 export const fontSize = {
@@ -45,11 +46,31 @@ export const header = {
     paddingTop: size.xxxs,
     paddingBottom: size.xxxs,
     backgroundColor: color.white,
-    zIndex: 1,
   },
 };
 
 export const image = {
   default: {
+  },
+};
+
+export const button = {
+  text: {
+    color: color.black,
+  },
+};
+
+export const remove = {
+  padding: {
+    paddingTop: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingBottom: 0,
+  },
+  margin: {
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 0,
   },
 };
