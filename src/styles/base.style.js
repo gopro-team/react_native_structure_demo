@@ -1,4 +1,7 @@
+import { Dimensions } from 'react-native';
 import { objToStyle } from 'utils/style';
+
+const { height, width } = Dimensions.get('window');
 
 export const size = {
   xxxxs: 2,
@@ -11,6 +14,8 @@ export const size = {
   xl: 25,
   xxl: 30,
   xxxl: 35,
+  vw: width,
+  vh: height,
 };
 
 export const color = {
@@ -40,5 +45,10 @@ export const header = {
     paddingTop: size.xxxs,
     paddingBottom: size.xxxs,
     backgroundColor: color.white,
+  },
+};
+
+export const image = {
+  default: {
   },
 };

@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
 import {
-  Container, Header, Content, Button, Text
+  Container,
 } from 'native-base';
-import { navigate } from 'components/Navigator';
 import HomeHeader from './HomeHeader';
+import PhotosList from './PhotosList';
 
 export default class Home extends Component {
   render() {
     return (
       <Container>
         <HomeHeader />
-        <Text>Home</Text>
-        <Button
-          onPress={() => {
-            navigate('Filter');
-          }}
-        >
-          <Text>To filter</Text>
-        </Button>
+        <PhotosList />
       </Container>
     );
   }
