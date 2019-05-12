@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import styles from './index.style';
 
@@ -10,22 +9,33 @@ export class SearchBox extends Component {
     this.state = {
       searchText: '',
       searchResult: [],
+      isWaiting: false,
     };
+    this.timeout = [];
   }
 
-  callSearch = (searchText) => {
-
+  callSearch = () => {
+    const { searchText } = this.state;
+    this.setState({
+      isWaiting: false,
+    });
+    console.warn(`search ${searchText}`);
   };
 
   updateSearch = (searchText) => {
     this.setState({
       searchText,
+      isWaiting: true,
+    }, () => {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        this.callSearch();
+      }, 300);
     });
-    this.callSearch(searchText);
   };
 
   render() {
-    const { searchText } = this.state;
+    const { searchText, isWaiting } = this.state;
     return (
       <SearchBar
         placeholder="Search for tags ..."
@@ -34,7 +44,7 @@ export class SearchBox extends Component {
         containerStyle={styles.container}
         inputContainerStyle={styles.input}
         round
-        showLoading
+        showLoading={isWaiting}
       />
     );
   }
