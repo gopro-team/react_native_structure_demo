@@ -17,4 +17,7 @@ export default objToStyle({
   show: {
     zIndex: 5,
   },
+  searchBar: {
+    backgroundColor: 'black',
+  },
 });

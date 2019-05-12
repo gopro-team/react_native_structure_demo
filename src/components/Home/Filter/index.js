@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text } from 'react-native';
 import { View } from 'react-native-animatable';
+import SearchBox from './SearchBox';
 import styles from './index.style';
 
 export class Filter extends Component {
@@ -45,7 +46,7 @@ export class Filter extends Component {
           (isShow ? styles.show : styles.hide)
         ]}
       >
-        <Text>Filter</Text>
+        <SearchBox />
       </View>
     );
   }

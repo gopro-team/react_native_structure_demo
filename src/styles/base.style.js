@@ -19,8 +19,11 @@ export const size = {
 };
 
 export const color = {
+  transparent: 'transparent',
   white: 'white',
   black: 'black',
+  gray: '#cccccc',
+  lightGray: '#eeeeee',
 };
 
 export const fontSize = {
