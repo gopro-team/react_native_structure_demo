@@ -5,6 +5,7 @@ import { View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import {
   Header, Button, Left, Body, Right, Icon, Title, Text, Badge,
 } from 'native-base';
+import * as Animatable from 'react-native-animatable';
 import { toggleFilter } from 'actions/app';
 import FilterBadge from './FilterBadge';
 import styles from './index.style';
@@ -24,7 +25,12 @@ export class HomeHeader extends Component {
     if (isShowFilter) {
       return (
         <Button transparent>
-          <Text style={styles.btnText}>Clear</Text>
+          <Animatable.Text
+            animation="fadeIn"
+            style={styles.btnText}
+          >
+            Clear
+          </Animatable.Text>
         </Button>
       );
     }
@@ -60,7 +66,12 @@ export class HomeHeader extends Component {
           transparent
           onPress={this.toggleFilter}
         >
-          <Text style={styles.btnText}>Done</Text>
+          <Animatable.Text
+            animation="fadeIn"
+            style={styles.btnText}
+          >
+            Done
+          </Animatable.Text>
         </Button>
       );
     }
