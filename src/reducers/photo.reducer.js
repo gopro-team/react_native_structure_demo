@@ -1,6 +1,4 @@
 import { photoAction } from 'consts/actions';
-import store from 'store';
-import { getPhotosRatio } from 'actions/photo';
 
 export const INITIAL_STATE = {
   photosList: [],

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image } from 'react-native-elements';
+import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import { imageStyleWithRatio } from 'utils/image';
 import styles from './index.style';
 
@@ -11,6 +12,8 @@ export class Photo extends Component {
         <Image
           style={imageStyleWithRatio(styles.image, photo.ratio)}
           source={{ uri: photo.url }}
+          placeholderStyle={styles.placeholder}
+          PlaceholderContent={<ActivityIndicator />}
         />
       </TouchableOpacity>
     );

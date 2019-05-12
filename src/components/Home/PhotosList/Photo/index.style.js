@@ -1,5 +1,5 @@
 import { objToStyle } from 'utils/style';
-import { size, image } from 'styles/base.style';
+import { size, image, color } from 'styles/base.style';
 
 const containerWidth = (size.vw - 2 * size.xs) / 3;
 
@@ -13,5 +13,8 @@ export default objToStyle({
     ...image.default,
     width: containerWidth - 2 * size.xs,
     height: 'auto',
+  },
+  placeholder: {
+    backgroundColor: color.lightGray,
   },
 });

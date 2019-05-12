@@ -8,24 +8,33 @@ export class SearchBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: '',
+      searchText: '',
+      searchResult: [],
     };
   }
 
-  updateSearch = (search) => {
-    this.setState({ search });
+  callSearch = (searchText) => {
+
+  };
+
+  updateSearch = (searchText) => {
+    this.setState({
+      searchText,
+    });
+    this.callSearch(searchText);
   };
 
   render() {
-    const { search } = this.state;
+    const { searchText } = this.state;
     return (
       <SearchBar
-        platform="ios"
         placeholder="Search for tags ..."
         onChangeText={this.updateSearch}
-        value={search}
+        value={searchText}
         containerStyle={styles.container}
         inputContainerStyle={styles.input}
+        round
+        showLoading
       />
     );
   }

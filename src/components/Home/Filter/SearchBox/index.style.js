@@ -6,6 +6,8 @@ export default objToStyle({
   container: {
     backgroundColor: color.transparent,
     justifyContent: 'center',
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
   },
   input: {
     backgroundColor: color.lightGray,

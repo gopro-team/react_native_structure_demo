@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import app from './app';
-import photo from './photo';
+import app from './app.reducer';
+import photo from './photo.reducer';
 
 export default combineReducers({
   app,

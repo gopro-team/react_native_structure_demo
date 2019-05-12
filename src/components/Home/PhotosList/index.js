@@ -4,13 +4,14 @@ import { Image, ScrollView } from 'react-native';
 import {
   Container,
 } from 'native-base';
-import { getPhotosWithRatio } from 'actions/photo';
+import { getPhotosWithRatio } from 'actions/photo.action';
 import Photo from './Photo';
 import styles from './index.style';
 
 export class PhotosList extends Component {
   componentDidMount() {
-    this.props.getPhotosWithRatio();
+    const { getPhotosWithRatio } = this.props;
+    getPhotosWithRatio();
     this.prefetchPhotos();
   }
 

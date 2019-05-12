@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise';
-import rootReducer from 'reducers/root';
+import rootReducer from 'reducers/root.reducer';
 import clientMiddleware from './clientMiddleware';
 
 const enhancerList = [];

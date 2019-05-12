@@ -6,7 +6,7 @@ import {
   Header, Button, Left, Body, Right, Icon, Title, Text, Badge,
 } from 'native-base';
 import * as Animatable from 'react-native-animatable';
-import { toggleFilter } from 'actions/app';
+import { toggleFilter } from 'actions/app.action';
 import FilterBadge from './FilterBadge';
 import styles from './index.style';
 

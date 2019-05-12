@@ -1,10 +1,5 @@
 export const appAction = {
-  TEST_ACTION: 'TEST_ACTION',
   TOGGLE_FILTER: 'TOGGLE_FILTER',
-};
-
-export const userAction = {
-  TEST_ACTION: 'TEST_ACTION',
 };
 
 export const photoAction = {
