@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { SearchBar } from 'react-native-elements';
+import SearchEngine from 'utils/searchEngine';
 import styles from './index.style';
 
 
@@ -12,14 +14,35 @@ export class SearchBox extends Component {
       isWaiting: false,
     };
     this.timeout = [];
+    this.SearchEngine = null;
   }
 
-  callSearch = () => {
+  componentDidMount() {
+    this.setUpSearchEngine();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { allFilters } = this.props;
+    if (JSON.stringify(prevProps.allFilters) === JSON.stringify(allFilters)) {
+      return;
+    }
+    this.setUpSearchEngine();
+  }
+
+  setUpSearchEngine = () => {
+    const { allFilters } = this.props;
+    this.SearchEngine = SearchEngine.setup(allFilters);
+  }
+
+  handleSearch = () => {
     const { searchText } = this.state;
     this.setState({
       isWaiting: false,
     });
-    console.warn(`search ${searchText}`);
+    const searchResult = this.SearchEngine.search(searchText);
+    this.setState({
+      searchResult,
+    });
   };
 
   updateSearch = (searchText) => {
@@ -29,7 +52,7 @@ export class SearchBox extends Component {
     }, () => {
       clearTimeout(this.timeout);
       this.timeout = setTimeout(() => {
-        this.callSearch();
+        this.handleSearch();
       }, 300);
     });
   };
@@ -50,4 +73,8 @@ export class SearchBox extends Component {
   }
 }
 
-export default SearchBox;
+const mapStateToProps = ({ app }) => ({
+  allFilters: app.allFilters,
+});
+
+export default connect(mapStateToProps, null)(SearchBox);

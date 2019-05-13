@@ -3,6 +3,33 @@ import { toggleType } from 'consts/common';
 
 export const INITIAL_STATE = {
   isShowFilter: false,
+  allFilters: {
+    costume: [
+      {
+        id: 'ao_dai',
+        name: {
+          vi: 'Áo Dài',
+          en: 'Long Dress',
+        }
+      }
+    ],
+    background: [
+      {
+        id: 'song_ho',
+        name: {
+          vi: 'Sông hồ',
+          en: 'Lake',
+        }
+      },
+      {
+        id: 'nui',
+        name: {
+          vi: 'Núi',
+          en: 'Mountain',
+        }
+      },
+    ],
+  },
   filters: [],
 };
 

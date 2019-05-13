@@ -8,6 +8,7 @@
     "devtools": "react-devtools"
   },
   "dependencies": {
+    "fuse.js": "^3.4.4",
     "native-base": "^2.12.1",
     "react": "16.8.3",
     "react-native": "^0.59.6",
