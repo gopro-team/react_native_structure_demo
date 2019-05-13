@@ -1,7 +1,9 @@
 import { photoAction } from 'consts/actions';
+import { photosListTypes } from 'consts/photo';
 
 export const INITIAL_STATE = {
   photosList: [],
+  photosListType: photosListTypes[0],
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,6 +18,18 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         photosList: photosWithRatio,
+      };
+    }
+
+    case photoAction.CHANGE_PHOTO_LIST_TYPE: {
+      const { photosListType } = state;
+      let nextIndex = photosListTypes.indexOf(photosListType) + 1;
+      if (nextIndex >= photosListTypes.length) {
+        nextIndex = 0;
+      }
+      return {
+        ...state,
+        photosListType: photosListTypes[nextIndex],
       };
     }
 

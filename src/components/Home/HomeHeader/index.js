@@ -5,8 +5,11 @@ import { View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import {
   Header, Button, Left, Body, Right, Icon, Title, Text, Badge,
 } from 'native-base';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Animatable from 'react-native-animatable';
 import { toggleFilter } from 'actions/app.action';
+import { changePhotosListType } from 'actions/photo.action';
+import { size } from 'styles/base.style';
 import FilterBadge from './FilterBadge';
 import styles from './index.style';
 
@@ -18,6 +21,11 @@ export class HomeHeader extends Component {
 
   toggleFilter = () => {
     this.props.toggleFilter();
+  };
+
+  changePhotosListType = () => {
+    const { changePhotosListType } = this.props;
+    changePhotosListType();
   };
 
   renderLeft = () => {
@@ -59,7 +67,7 @@ export class HomeHeader extends Component {
   };
 
   renderRight = () => {
-    const { isShowFilter } = this.props;
+    const { isShowFilter, photosListType } = this.props;
     if (isShowFilter) {
       return (
         <Button
@@ -76,8 +84,13 @@ export class HomeHeader extends Component {
       );
     }
     return (
-      <TouchableOpacity>
-        <Icon name="search" />
+      <TouchableOpacity
+        onPress={this.changePhotosListType}
+      >
+        <MaterialCommunityIcons
+          size={size.xl}
+          name={photosListType.iconName}
+        />
       </TouchableOpacity>
     );
   };
@@ -107,12 +120,14 @@ export class HomeHeader extends Component {
   }
 }
 
-const mapStateToProps = ({ app }) => ({
+const mapStateToProps = ({ app, photo }) => ({
   isShowFilter: app.isShowFilter,
+  photosListType: photo.photosListType,
 });
 
 const mapDispatchToProps = {
   toggleFilter,
+  changePhotosListType,
 };
 
 export default withNavigation(

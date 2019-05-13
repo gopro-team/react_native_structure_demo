@@ -121,3 +121,9 @@ export function getPhotosRatio(photosList) {
     promise: Promise.all(photosList.map(photo => getRatioFromImageUrl(photo.url))),
   };
 }
+
+export function changePhotosListType() {
+  return {
+    type: photoAction.CHANGE_PHOTO_LIST_TYPE,
+  };
+}
