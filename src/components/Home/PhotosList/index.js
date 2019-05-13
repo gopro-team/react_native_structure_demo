@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Image, ScrollView } from 'react-native';
-import {
-  Container,
-} from 'native-base';
+import { Image, FlatList } from 'react-native';
 import { getPhotosWithRatio } from 'actions/photo.action';
 import Photo from './Photo';
 import styles from './index.style';
 
 export class PhotosList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      refreshing: false,
+    };
+  }
+
   componentDidMount() {
     const { getPhotosWithRatio } = this.props;
     getPhotosWithRatio();
@@ -38,16 +42,29 @@ export class PhotosList extends Component {
       });
   };
 
+  handleRefresh = () => {
+    this.setState({
+      refreshing: true,
+    });
+  }
+
+  renderPhoto = ({ item }) => (
+    <Photo photo={item} key={item.id} />
+  );
+
   render() {
     const { photosList } = this.props;
+    const { refreshing } = this.state;
     return (
-      <ScrollView>
-        <Container style={styles.list}>
-          {
-            photosList.map(photo => <Photo photo={photo} key={photo.id} />)
-          }
-        </Container>
-      </ScrollView>
+      <FlatList
+        contentContainerStyle={styles.list}
+        numColumns={3}
+        data={photosList}
+        renderItem={this.renderPhoto}
+        onRefresh={this.handleRefresh}
+        refreshing={refreshing}
+        extraData={this.state}
+      />
     );
   }
 }
