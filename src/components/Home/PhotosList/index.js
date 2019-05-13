@@ -53,12 +53,13 @@ export class PhotosList extends Component {
   );
 
   render() {
-    const { photosList } = this.props;
+    const { photosList, photosListType } = this.props;
     const { refreshing } = this.state;
     return (
       <FlatList
         contentContainerStyle={styles.list}
-        numColumns={3}
+        numColumns={photosListType.columnCount}
+        key={`${photosListType.columnCount}-col`}
         data={photosList}
         renderItem={this.renderPhoto}
         onRefresh={this.handleRefresh}
@@ -71,6 +72,7 @@ export class PhotosList extends Component {
 
 const mapStateToProps = ({ photo }) => ({
   photosList: photo && photo.photosList,
+  photosListType: photo.photosListType,
 });
 
 const mapDispatcToProps = {
