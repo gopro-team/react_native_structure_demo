@@ -2,7 +2,6 @@ import Fuse from 'fuse.js';
 
 const defaultOptions = {
   shouldSort: true,
-  includeScore: true,
   threshold: 0.6,
   location: 0,
   distance: 20,
@@ -46,8 +45,6 @@ export const setup = (_list = [], _options = tagOptions, _default = true, _type 
   } else {
     newList = _list;
   }
-  console.log(newList);
-  console.log(_list);
   return new Fuse(newList, newOptions);
 };
 

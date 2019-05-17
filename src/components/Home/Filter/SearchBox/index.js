@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { SearchBar } from 'react-native-elements';
 import SearchEngine from 'utils/searchEngine';
+import ResultsBox from './ResultsBox';
 import styles from './index.style';
 
 
@@ -58,17 +60,22 @@ export class SearchBox extends Component {
   };
 
   render() {
-    const { searchText, isWaiting } = this.state;
+    const { searchText, isWaiting, searchResult } = this.state;
     return (
-      <SearchBar
-        placeholder="Search for tags ..."
-        onChangeText={this.updateSearch}
-        value={searchText}
-        containerStyle={styles.container}
-        inputContainerStyle={styles.input}
-        round
-        showLoading={isWaiting}
-      />
+      <View>
+        <SearchBar
+          placeholder="Search for tags ..."
+          onChangeText={this.updateSearch}
+          value={searchText}
+          containerStyle={styles.container}
+          inputContainerStyle={styles.input}
+          round
+          showLoading={isWaiting}
+        />
+        <ResultsBox
+          results={searchResult}
+        />
+      </View>
     );
   }
 }

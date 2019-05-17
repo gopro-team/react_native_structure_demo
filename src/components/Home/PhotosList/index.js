@@ -60,6 +60,7 @@ export class PhotosList extends Component {
         contentContainerStyle={styles.list}
         numColumns={photosListType.columnCount}
         key={`${photosListType.columnCount}-col`}
+        keyExtractor={item => item.id}
         data={photosList}
         renderItem={this.renderPhoto}
         onRefresh={this.handleRefresh}

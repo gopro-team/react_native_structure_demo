@@ -1,7 +1,9 @@
 import { appAction } from 'consts/actions';
 import { toggleType } from 'consts/common';
+import LANG from 'consts/language';
 
 export const INITIAL_STATE = {
+  language: LANG.VI,
   isShowFilter: false,
   allFilters: {
     costume: [
@@ -53,6 +55,21 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isShowFilter,
+      };
+    }
+
+    case appAction.TOGGLE_TAG: {
+      const { tagId } = action.payload;
+      const { filters } = state;
+      const index = filters.indexOf(tagId);
+      if (index < 0) {
+        filters.push(tagId);
+      } else {
+        filters.splice(index, 1);
+      }
+      return {
+        ...state,
+        filters,
       };
     }
 

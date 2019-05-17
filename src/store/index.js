@@ -1,15 +1,12 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import promiseMiddleware from 'redux-promise';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from 'reducers/root.reducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import clientMiddleware from './clientMiddleware';
 
 const enhancerList = [];
 
-const composedEnhancer = compose(
+const composedEnhancer = composeWithDevTools(
   applyMiddleware(
-    // thunkMiddleware,
-    // promiseMiddleware,
     clientMiddleware,
   ),
   ...enhancerList,

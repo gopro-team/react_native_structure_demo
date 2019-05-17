@@ -1,5 +1,6 @@
 export const appAction = {
   TOGGLE_FILTER: 'TOGGLE_FILTER',
+  TOGGLE_TAG: 'TOGGLE_TAG',
 };
 
 export const photoAction = {

@@ -7,3 +7,10 @@ export function toggleFilter(type = toggleType.TOGGLE) {
     payload: { type },
   };
 }
+
+export function toggleTag(tagId) {
+  return {
+    type: appAction.TOGGLE_TAG,
+    payload: { tagId },
+  };
+}

@@ -6,7 +6,6 @@ import 'styles/animation';
 
 export default class App extends Component {
   render() {
-    console.warn('App:render');
     return (
       <React.Fragment>
         <StatusBar hidden />
