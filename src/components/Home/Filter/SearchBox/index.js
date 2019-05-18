@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { SearchBar } from 'react-native-elements';
 import SearchEngine from 'utils/searchEngine';
+import { state } from 'styles/base.style';
 import ResultsBox from './ResultsBox';
 import styles from './index.style';
 
@@ -14,6 +15,7 @@ export class SearchBox extends Component {
       searchText: '',
       searchResult: [],
       isWaiting: false,
+      showResultBox: false,
     };
     this.timeout = [];
     this.SearchEngine = null;
@@ -59,8 +61,22 @@ export class SearchBox extends Component {
     });
   };
 
+  onFocus = () => {
+    this.setState({
+      showResultBox: true,
+    });
+  };
+
+  onBlur = () => {
+    this.setState({
+      showResultBox: false,
+    });
+  };
+
   render() {
-    const { searchText, isWaiting, searchResult } = this.state;
+    const {
+      searchText, isWaiting, searchResult, showResultBox
+    } = this.state;
     return (
       <View>
         <SearchBar
@@ -71,8 +87,11 @@ export class SearchBox extends Component {
           inputContainerStyle={styles.input}
           round
           showLoading={isWaiting}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
         />
         <ResultsBox
+          hide={!showResultBox || !searchText}
           results={searchResult}
         />
       </View>

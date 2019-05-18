@@ -8,7 +8,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import { toggleTag } from 'actions/app.action';
 import { isTagSelected } from 'utils/tags';
-import { size, color } from 'styles/base.style';
+import { size, color, state } from 'styles/base.style';
 import styles from './index.style';
 import text from './index.text';
 
@@ -63,8 +63,14 @@ export class ResultsBox extends Component {
   };
 
   render() {
+    const { hide } = this.props;
     return (
-      <View style={styles.resultContainer}>
+      <View
+        style={[
+          styles.resultContainer,
+          (hide ? state.hide : {})
+        ]}
+      >
         {
           this.renderItems()
         }

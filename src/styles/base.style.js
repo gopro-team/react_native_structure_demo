@@ -78,3 +78,9 @@ export const remove = {
     marginBottom: 0,
   },
 };
+
+export const state = {
+  hide: {
+    display: 'none',
+  }
+};
