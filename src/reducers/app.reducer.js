@@ -5,33 +5,89 @@ import LANG from 'consts/language';
 export const INITIAL_STATE = {
   language: LANG.VI,
   isShowFilter: false,
-  allFilters: {
-    costume: [
-      {
-        id: 'ao_dai',
-        name: {
-          vi: 'Áo Dài',
-          en: 'Long Dress',
-        }
-      }
-    ],
-    background: [
-      {
-        id: 'song_ho',
-        name: {
-          vi: 'Sông hồ',
-          en: 'Lake',
-        }
+  allTagsCategory: [
+    {
+      id: 'costume',
+      categoryName: {
+        vi: 'Costume',
+        en: 'Trang phục',
       },
-      {
-        id: 'nui',
-        name: {
-          vi: 'Núi',
-          en: 'Mountain',
+      tags: [
+        {
+          id: 'long-dress',
+          name: {
+            vi: 'Áo dào',
+            en: 'Long dress'
+          },
+        },
+        {
+          id: 'uniform',
+          name: {
+            vi: 'Đồng phục',
+            en: 'Uniform'
+          },
+        },
+        {
+          id: 'sport',
+          name: {
+            vi: 'Sport',
+            en: 'Thể thao'
+          }
+        },
+        {
+          id: 'office',
+          name: {
+            vi: 'Công sở',
+            en: 'Office'
+          },
+        },
+        {
+          id: 'skirt',
+          name: {
+            vi: 'Váy',
+            en: 'Skirt'
+          },
         }
+      ]
+    },
+    {
+      id: 'background',
+      categoryName: {
+        vi: 'Background',
+        en: 'Bối cảnh',
       },
-    ],
-  },
+      tags: [
+        {
+          id: 'mountain',
+          name: {
+            vi: 'Núi',
+            en: 'Mountain'
+          },
+        },
+        {
+          id: 'river',
+          name: {
+            vi: 'Sông hồ',
+            en: 'River',
+          }
+        },
+        {
+          id: 'stairs',
+          name: {
+            vi: 'Cầu thang',
+            en: 'Stairs',
+          }
+        },
+        {
+          id: 'trees',
+          name: {
+            vi: 'Cây cối',
+            en: 'Trees'
+          },
+        }
+      ]
+    },
+  ],
   filters: [],
 };
 

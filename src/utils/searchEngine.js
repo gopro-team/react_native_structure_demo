@@ -16,13 +16,14 @@ const tagOptions = {
   ],
 };
 
-export const convertTagsObjectToList = (object) => {
+export const convertCategoriesToTags = (categories) => {
   const list = [];
-  Object.keys(object).forEach((key) => {
-    object[key].forEach((tag) => {
+  categories.forEach((category) => {
+    category.tags.forEach((tag) => {
       list.push({
         ...tag,
-        group: key,
+        categoryId: category.id,
+        categoryName: category.categoryName,
       });
     });
   });
@@ -41,7 +42,7 @@ export const setup = (_list = [], _options = tagOptions, _default = true, _type 
     newOptions = _options;
   }
   if (_type === 'tag') {
-    newList = convertTagsObjectToList(_list);
+    newList = convertCategoriesToTags(_list);
   } else {
     newList = _list;
   }

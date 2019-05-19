@@ -26,16 +26,16 @@ export class SearchBox extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { allFilters } = this.props;
-    if (JSON.stringify(prevProps.allFilters) === JSON.stringify(allFilters)) {
+    const { allTagsCategory } = this.props;
+    if (JSON.stringify(prevProps.allTagsCategory) === JSON.stringify(allTagsCategory)) {
       return;
     }
     this.setUpSearchEngine();
   }
 
   setUpSearchEngine = () => {
-    const { allFilters } = this.props;
-    this.SearchEngine = SearchEngine.setup(allFilters);
+    const { allTagsCategory } = this.props;
+    this.SearchEngine = SearchEngine.setup(allTagsCategory);
   }
 
   handleSearch = () => {
@@ -43,7 +43,8 @@ export class SearchBox extends Component {
     this.setState({
       isWaiting: false,
     });
-    const searchResult = this.SearchEngine.search(searchText);
+    const searchResult = this.SearchEngine.search(searchText)
+      .slice(0, 5);
     this.setState({
       searchResult,
     });
@@ -100,7 +101,7 @@ export class SearchBox extends Component {
 }
 
 const mapStateToProps = ({ app }) => ({
-  allFilters: app.allFilters,
+  allTagsCategory: app.allTagsCategory,
 });
 
 export default connect(mapStateToProps, null)(SearchBox);

@@ -34,4 +34,16 @@ export default objToStyle({
   textGray: {
     color: color.gray,
   },
+  divider: {
+    color: color.gray,
+    fontSize: size.xs,
+    marginHorizontal: 5,
+  },
+  subText: {
+    color: color.gray,
+    fontSize: size.xs,
+  },
+  center: {
+    alignItems: 'center',
+  },
 });

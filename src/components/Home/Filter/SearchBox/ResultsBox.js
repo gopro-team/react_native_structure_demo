@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import TextTrans from 'components/Common/TextTrans';
 import {
   ListItem, Left, Right,
@@ -50,9 +50,16 @@ export class ResultsBox extends Component {
         style={(index === results.length - 1) ? styles.noBottomDivider : {}}
         onPress={() => this.handleToggleTag(item.id)}
       >
-        <Left>
+        <Left
+          style={styles.center}
+        >
           <TextTrans
             textObject={item.name}
+          />
+          <Text style={styles.divider}>-</Text>
+          <TextTrans
+            textObject={item.categoryName}
+            style={styles.subText}
           />
         </Left>
         <Right>
