@@ -25,6 +25,7 @@ export const color = {
   gray: '#cccccc',
   lightGray: '#eeeeee',
   primary: '#007aff',
+  whiteBlur: '#ffffffaa',
 };
 
 export const fontSize = {

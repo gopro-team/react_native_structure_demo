@@ -79,7 +79,7 @@ export class SearchBox extends Component {
       searchText, isWaiting, searchResult, showResultBox
     } = this.state;
     return (
-      <View>
+      <View style={styles.view}>
         <SearchBar
           placeholder="Search for tags ..."
           onChangeText={this.updateSearch}

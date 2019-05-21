@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
 import { View } from 'react-native-animatable';
 import SearchBox from './SearchBox';
+import CurrentTags from './CurrentTags';
 import styles from './index.style';
 
 export class Filter extends Component {
@@ -47,6 +47,7 @@ export class Filter extends Component {
         ]}
       >
         <SearchBox />
+        <CurrentTags />
       </View>
     );
   }

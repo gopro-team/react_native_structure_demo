@@ -125,7 +125,7 @@ export default (state = INITIAL_STATE, action) => {
       }
       return {
         ...state,
-        filters,
+        filters: [...filters],
       };
     }
 

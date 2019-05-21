@@ -3,6 +3,9 @@ import { size, color } from 'styles/base.style';
 
 
 export default objToStyle({
+  view: {
+    zIndex: 6,
+  },
   container: {
     backgroundColor: color.transparent,
     justifyContent: 'center',
