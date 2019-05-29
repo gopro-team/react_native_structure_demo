@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StatusBar } from 'react-native';
 import Navigator, { setTopLevelNavigator } from 'components/Navigator';
+import { fetchTagsCategory } from 'actions/app.action';
 import 'styles/animation';
 
 
-export default class App extends Component {
+export class App extends Component {
+  componentDidMount() {
+    this.props.fetchTagsCategory();
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -16,3 +22,10 @@ export default class App extends Component {
     );
   }
 }
+
+const mapStateToProps = null;
+const mapDispatchToProps = {
+  fetchTagsCategory,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

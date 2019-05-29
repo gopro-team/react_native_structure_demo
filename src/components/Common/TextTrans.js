@@ -12,12 +12,13 @@ export class TextTrans extends Component {
   }
 
   render() {
+    const TextComponent = this.props.component || Text;
     return (
-      <Text
+      <TextComponent
         {...this.props}
       >
         {this.convertText()}
-      </Text>
+      </TextComponent>
     );
   }
 }

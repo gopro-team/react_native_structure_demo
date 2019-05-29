@@ -1,102 +1,27 @@
 import { appAction } from 'consts/actions';
 import { toggleType } from 'consts/common';
 import LANG from 'consts/language';
+import { convertCategoriesToTags } from 'utils/searchEngine';
 
 export const INITIAL_STATE = {
   language: LANG.VI,
   isShowFilter: false,
-  allTagsCategory: [
-    {
-      id: 'costume',
-      categoryName: {
-        vi: 'Costume',
-        en: 'Trang phục',
-      },
-      tags: [
-        {
-          id: 'long-dress',
-          name: {
-            vi: 'Áo dào',
-            en: 'Long dress'
-          },
-        },
-        {
-          id: 'uniform',
-          name: {
-            vi: 'Đồng phục',
-            en: 'Uniform'
-          },
-        },
-        {
-          id: 'sport',
-          name: {
-            vi: 'Sport',
-            en: 'Thể thao'
-          }
-        },
-        {
-          id: 'office',
-          name: {
-            vi: 'Công sở',
-            en: 'Office'
-          },
-        },
-        {
-          id: 'skirt',
-          name: {
-            vi: 'Váy',
-            en: 'Skirt'
-          },
-        }
-      ]
-    },
-    {
-      id: 'background',
-      categoryName: {
-        vi: 'Background',
-        en: 'Bối cảnh',
-      },
-      tags: [
-        {
-          id: 'mountain',
-          name: {
-            vi: 'Núi',
-            en: 'Mountain'
-          },
-        },
-        {
-          id: 'river',
-          name: {
-            vi: 'Sông hồ',
-            en: 'River',
-          }
-        },
-        {
-          id: 'stairs',
-          name: {
-            vi: 'Cầu thang',
-            en: 'Stairs',
-          }
-        },
-        {
-          id: 'trees',
-          name: {
-            vi: 'Cây cối',
-            en: 'Trees'
-          },
-        }
-      ]
-    },
-  ],
+  allTagsCategory: [],
+  allTags: [],
   filters: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case appAction.TEST_ACTION:
+    case appAction.FETCH_TAGS_CATEGORY_SUCCESS: {
+      const { tags } = action.payload;
+      const allTags = convertCategoriesToTags(tags);
       return {
         ...state,
+        allTagsCategory: tags,
+        allTags,
       };
+    }
 
     case appAction.TOGGLE_FILTER: {
       const { type } = action.payload;
@@ -116,10 +41,11 @@ export default (state = INITIAL_STATE, action) => {
 
     case appAction.TOGGLE_TAG: {
       const { tagId } = action.payload;
-      const { filters } = state;
-      const index = filters.indexOf(tagId);
+      const { filters, allTags } = state;
+      const tag = allTags.find(tag => tag.id === tagId);
+      const index = filters.map(filter => filter.id).indexOf(tag.id);
       if (index < 0) {
-        filters.push(tagId);
+        filters.push(tag);
       } else {
         filters.splice(index, 1);
       }

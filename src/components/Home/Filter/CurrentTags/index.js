@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
+import { toggleTag } from 'actions/app.action';
 import Tag from './Tag';
 import styles from './index.style';
 
@@ -11,11 +12,12 @@ export class CurrentTags extends Component {
   }
 
   renderItems = () => {
-    const { filters } = this.props;
+    const { filters, toggleTag } = this.props;
     return filters.map(tag => (
       <Tag
-        key={tag}
+        key={tag.id}
         tag={tag}
+        toggleTag={toggleTag}
       />
     ));
   };
@@ -40,4 +42,8 @@ const mapStateToProps = ({ app }) => ({
   filters: app.filters,
 });
 
-export default connect(mapStateToProps, null)(CurrentTags);
+const mapDispatchToProps = {
+  toggleTag,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentTags);
