@@ -49,7 +49,7 @@ export class PhotosList extends Component {
   }
 
   renderPhoto = ({ item }) => (
-    <Photo photo={item} key={item.id} />
+    <Photo photo={item} key={item.id.toString()} />
   );
 
   render() {
@@ -60,7 +60,7 @@ export class PhotosList extends Component {
         contentContainerStyle={styles.list}
         numColumns={photosListType.columnCount}
         key={`${photosListType.columnCount}-col`}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         data={photosList}
         renderItem={this.renderPhoto}
         onRefresh={this.handleRefresh}

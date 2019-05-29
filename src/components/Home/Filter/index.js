@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { View } from 'react-native-animatable';
 import SearchBox from './SearchBox';
 import CurrentTags from './CurrentTags';
+import Section from './Section';
 import styles from './index.style';
 
 export class Filter extends Component {
@@ -48,6 +49,7 @@ export class Filter extends Component {
       >
         <SearchBox />
         <CurrentTags />
+        <Section />
       </View>
     );
   }

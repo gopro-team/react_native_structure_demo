@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import styles from './index.style';
+// import styles from './index.style';
 
 
 export class Section extends Component {

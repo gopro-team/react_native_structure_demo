@@ -22,4 +22,7 @@ export default objToStyle({
     marginRight: 5,
     color: color.whiteBlur,
   },
+  noFilterText: {
+    alignSelf: 'center',
+  },
 });

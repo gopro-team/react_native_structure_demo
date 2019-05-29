@@ -13,6 +13,15 @@ export class CurrentTags extends Component {
 
   renderItems = () => {
     const { filters, toggleTag } = this.props;
+    if (filters.length === 0) {
+      return (
+        <Text
+          style={styles.noFilterText}
+        >
+          No filter has been applied.
+        </Text>
+      );
+    }
     return filters.map(tag => (
       <Tag
         key={tag.id}
