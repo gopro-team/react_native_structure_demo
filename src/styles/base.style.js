@@ -14,6 +14,8 @@ export const size = {
   xl: 25,
   xxl: 30,
   xxxl: 35,
+  xxxxl: 50,
+  xxxxxl: 75,
   vw: width,
   vh: height,
 };

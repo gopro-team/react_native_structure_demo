@@ -6,6 +6,7 @@ import {
   NavigationActions,
 } from 'react-navigation';
 import Home from 'components/Home';
+import PhotoDetail from 'components/Home/PhotoDetail';
 import Profile from 'components/Profile';
 
 const createDrawer = (HomeStack) => {
@@ -35,8 +36,8 @@ const createHomeStack = () => {
         header: null,
       },
     },
-    Detail: {
-      screen: React.Fragment,
+    PhotoDetail: {
+      screen: PhotoDetail,
     },
     Camera: {
       screen: React.Fragment,
