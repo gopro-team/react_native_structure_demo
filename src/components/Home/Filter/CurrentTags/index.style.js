@@ -6,6 +6,10 @@ export default objToStyle({
   view: {
     padding: size.xs,
   },
+  title: {
+    fontWeight: 'bold',
+    fontSize: size.m,
+  },
   resultContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -24,5 +28,8 @@ export default objToStyle({
   },
   noFilterText: {
     alignSelf: 'center',
+    flex: 1,
+    textAlign: 'center',
+    color: color.gray,
   },
 });

@@ -34,7 +34,9 @@ export class CurrentTags extends Component {
   render() {
     return (
       <View style={styles.view}>
-        <Text>Current Filters</Text>
+        <Text style={styles.title}>
+          Current Filters
+        </Text>
         <View
           style={styles.resultContainer}
         >
