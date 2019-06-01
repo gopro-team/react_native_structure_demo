@@ -22,13 +22,15 @@ export default objToStyle({
     alignItems: 'center',
     padding: size.xs,
   },
-  imageNameContainer: {
+  likeNumberContainer: {
+    marginLeft: size.xxs,
     width: 'auto',
   },
-  imageName: {
+  likes: {
     fontSize: size.m,
+    fontWeight: '600',
   },
-  iconsFooterContainer: {
+  likeContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -36,5 +38,30 @@ export default objToStyle({
   iconFooter: {
     fontSize: size.xxl,
     marginHorizontal: size.xxs,
+  },
+  detailContainer: {
+    padding: size.xs,
+  },
+  button: {
+    marginRight: size.xs,
+    marginBottom: size.xs,
+  },
+  tagsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  detail: {
+
+  },
+  row: {
+    flexDirection: 'row',
+    padding: size.xxxs,
+  },
+  label: {
+    fontSize: size.s,
+    width: size.s * 7,
+  },
+  text: {
+    fontSize: size.s,
   },
 });
