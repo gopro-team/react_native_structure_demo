@@ -2,7 +2,7 @@ import { photoAction } from 'consts/actions';
 import { getRatioFromImageUrl } from 'utils/image';
 
 const mockData = {
-  photosList: [
+  images: [
     {
       id: 1,
       url: 'https://via.placeholder.com/400x300',
@@ -366,7 +366,7 @@ const mockData = {
   ],
 };
 
-export function getPhotos() {
+export function getPhotos(after = null) {
   return {
     type: photoAction.GET_PHOTO,
     promise: Promise.resolve(mockData),
@@ -375,14 +375,14 @@ export function getPhotos() {
 
 export function getPhotosWithRatio() {
   return dispatch => dispatch(getPhotos())
-    .then(res => dispatch(getPhotosRatio(res.result.photosList)));
+    .then(res => dispatch(getPhotosRatio(res.result.images)));
 }
 
-export function getPhotosRatio(photosList) {
+export function getPhotosRatio(images) {
   return {
     type: photoAction.GET_PHOTO_RATIO,
-    payload: { photosList },
-    promise: Promise.all(photosList.map(photo => getRatioFromImageUrl(photo.url))),
+    payload: { images },
+    promise: Promise.all(images.map(photo => getRatioFromImageUrl(photo.url))),
   };
 }
 
