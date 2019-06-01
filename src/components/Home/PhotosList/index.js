@@ -9,43 +9,54 @@ export class PhotosList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      refreshing: false,
+      fetching: false,
     };
   }
 
   componentDidMount() {
     const { getPhotosWithRatio } = this.props;
     getPhotosWithRatio();
-    this.prefetchPhotos();
+    // this.prefetchPhotos();
   }
 
   componentDidUpdate(prevProps) {
     const { photosList } = this.props;
     if (photosList !== prevProps.photosList) {
+      this.setState({
+        fetching: false,
+      });
       this.prefetchPhotos();
     }
   }
 
+  fetchMore = () => {
+    const { getPhotosWithRatio, photosList } = this.props;
+    const after = photosList[photosList.length - 1].id;
+    getPhotosWithRatio(after);
+  };
+
   prefetchPhotos = () => {
     const { photosList } = this.props;
-    Promise.all(photosList.map(photo => Image.prefetch(photo.url)))
+    Promise.all(photosList.map(photo => Image.prefetch(photo.thumbnail_url)))
       .then((res) => {
-        this.queryPhotosCache();
+        // this.queryPhotosCache();
       });
   };
 
   queryPhotosCache = () => {
     const { photosList } = this.props;
-    Image.queryCache(photosList.map(photo => photo.url))
+    Image.queryCache(photosList.map(photo => photo.thumbnail_url))
       .then((res) => {
         console.log(res);
       });
   };
 
   handleRefresh = () => {
+    const { getPhotosWithRatio } = this.props;
     this.setState({
-      refreshing: true,
+      fetching: true,
     });
+    getPhotosWithRatio();
   }
 
   renderPhoto = ({ item }) => (
@@ -54,7 +65,7 @@ export class PhotosList extends Component {
 
   render() {
     const { photosList, photosListType } = this.props;
-    const { refreshing } = this.state;
+    const { fetching } = this.state;
     return (
       <FlatList
         contentContainerStyle={styles.list}
@@ -64,8 +75,10 @@ export class PhotosList extends Component {
         data={photosList}
         renderItem={this.renderPhoto}
         onRefresh={this.handleRefresh}
-        refreshing={refreshing}
+        refreshing={fetching}
         extraData={this.state}
+        onEndReached={this.fetchMore}
+        onEndReachedThreshold={0.4}
       />
     );
   }

@@ -23,7 +23,7 @@ export class Photo extends Component {
       >
         <Image
           style={imageStyleWithRatio(styles(photosListType.type).image, photo.ratio)}
-          source={{ uri: photo.url }}
+          source={{ uri: photo.thumbnail_url }}
           placeholderStyle={styles().placeholder}
           PlaceholderContent={<ActivityIndicator />}
         />

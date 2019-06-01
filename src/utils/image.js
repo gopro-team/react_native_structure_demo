@@ -1,9 +1,12 @@
 import { Image } from 'react-native';
 
 export const getRatioFromImageUrl = url => new Promise((resolve, reject) => {
+  console.log('get size');
   Image.getSize(url, (width, height) => {
+    console.log('get size OK');
     resolve(width / height);
   }, (error) => {
+    console.log('get size NOT');
     reject(error);
   });
 });

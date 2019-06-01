@@ -15,6 +15,7 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case appAction.FETCH_TAGS_CATEGORY_SUCCESS: {
       const { tags } = action.payload;
+      console.log(tags);
       const allTags = convertCategoriesToTags(tags);
       return {
         ...state,

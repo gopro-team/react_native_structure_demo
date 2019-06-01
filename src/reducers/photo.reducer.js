@@ -9,12 +9,21 @@ export const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case photoAction.GET_PHOTO_RATIO_SUCCESS: {
-      const { images } = action.options;
+      const { images, after } = action.options;
       const ratioList = action.payload;
       const photosWithRatio = images.map((photo, index) => ({
         ...photo,
         ratio: ratioList[index],
       }));
+      if (after) {
+        return {
+          ...state,
+          photosList: [
+            ...state.photosList,
+            ...photosWithRatio,
+          ],
+        };
+      }
       return {
         ...state,
         photosList: photosWithRatio,
