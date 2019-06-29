@@ -6,14 +6,16 @@ import { mockPhotosMore, mockPhotos } from 'consts/mock';
 export function getPhotos() {
   return {
     type: photoAction.GET_PHOTO,
-    promise: get('/images/pagination'),
+    // promise: get('/images/pagination'),
+    promise: Promise.resolve(mockPhotos),
   };
 }
 
 export function getMorePhotos(after) {
   return {
     type: photoAction.GET_MORE_PHOTO,
-    promise: get('/images/pagination', { after }),
+    // promise: get('/images/pagination', { after }),
+    promise: Promise.resolve(mockPhotosMore),
   };
 }
 
